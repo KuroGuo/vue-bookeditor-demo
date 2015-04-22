@@ -1,0 +1,12 @@
+{
+  "name": "vue-bookeditor-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "webpack --module-bind \"vue=vue\" --watch --devtool source-map src/main.js build/build.js",
+    "build": "webpack --module-bind \"vue=vue\" --plugin webpack/lib/optimize/UglifyJsPlugin src/main.js build/build.js"
+  },
+  "dependencies": {
+    "vue-loader": "^1.1.4",
+    "webpack": "^1.8.9"
+  }
+}

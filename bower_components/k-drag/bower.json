@@ -1,0 +1,22 @@
+{
+  "name": "k-drag",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kuroguo/k-drag",
+  "authors": [
+    "KuroGuo <413298956@qq.com>"
+  ],
+  "description": "High performance drag component.",
+  "main": "dist/k-drag.js",
+  "keywords": [
+    "k-drag",
+    "kuro"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
