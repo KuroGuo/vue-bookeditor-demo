@@ -3,16 +3,12 @@
 </template>
 
 <script>
-var editor = require('../view-models/editor')
-
 module.exports = {
   methods: {
     addImgbox: function (e) {
       e.preventDefault()
 
       this.page.addImgbox()
-
-      console.log(this.page)
     }
   }
 }

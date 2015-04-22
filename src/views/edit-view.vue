@@ -8,26 +8,19 @@
 </style>
 
 <template>
-<div v-component="toolbar" v-with="page: editor.currentPage"></div>
-<div v-component="stage" v-with="page: editor.currentPage"></div>
-<div v-component="page-navigitor" v-with="book: editor.book, currentPage: editor.currentPage"></div>
+<div v-component="toolbar" v-with="page: currentPage"></div>
+<div v-component="stage" v-with="page: currentPage"></div>
+<div v-component="page-navigitor" v-with="book: book, currentPage: currentPage"></div>
 <pre class="json-viewer" v-html="bookStr"></pre>
 </template>
 
 <script>
 var beautify = require('js-beautify').js_beautify
 
-window.book = require('../view-models/editor').book
-
 module.exports = {
-  data: function () {
-    return {
-      editor: require('../view-models/editor')
-    }
-  },
   computed: {
     bookStr: function () {
-      return beautify(JSON.stringify(this.editor.book), { indent_size: 2 })
+      return beautify(JSON.stringify(this.book), { indent_size: 2 })
     }
   },
   components: {
@@ -36,4 +29,6 @@ module.exports = {
     'page-navigitor': require('../components/page-navigitor.vue')
   }
 }
+
+window.book = module.exports.book
 </script>

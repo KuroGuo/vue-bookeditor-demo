@@ -39,6 +39,8 @@ function Imgbox(imgboxData) {
   this.y = imgboxData.y
 }
 
+Imgbox.prototype = new Box()
+
 function Box() {
 }
 
