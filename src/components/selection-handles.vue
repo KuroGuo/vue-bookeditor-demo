@@ -206,13 +206,11 @@ module.exports = {
 
       if (classList.contains('handle-rotate')) {
         this.rect = this.$el.getBoundingClientRect()
-        this.centerClientX = this.rect.left + this.rect.width / 2
-        this.centerClientY = this.rect.top + this.rect.height / 2
-        this.dragstartPointerRotation = computeRotation(e.clientX, e.clientY, this.centerClientX, this.centerClientY)
+        this.centerPageX = this.rect.left + this.rect.width / 2 + window.pageXOffset
+        this.centerPageY = this.rect.top + this.rect.height / 2 + window.pageYOffset
+        this.dragstartPointerRotation = computeRotation(e.pageX, e.pageY, this.centerPageX, this.centerPageY)
         this.centerBoxX = this.box.x + this.r * Math.cos(this.angle + this.radian)
         this.centerBoxY = this.box.y + this.r * Math.sin(this.angle + this.radian)
-      } else if (classList.contains('handle-left-top')) {
-
       }
     },
     ondrag: function (e) {
@@ -221,7 +219,7 @@ module.exports = {
       var deltaRotation, deltaWidth, deltaHeight
 
       if (classList.contains('handle-rotate')) {
-        deltaRotation = computeRotation(e.clientX, e.clientY, this.centerClientX, this.centerClientY) - this.dragstartPointerRotation
+        deltaRotation = computeRotation(e.pageX, e.pageY, this.centerPageX, this.centerPageY) - this.dragstartPointerRotation
 
         this.box.rotation = this.dragstartBoxRotation + deltaRotation
 
@@ -300,9 +298,9 @@ module.exports = {
   }
 }
 
-function computeRotation(clientX, clientY, centerClientX, centerClientY) {
-  var x = centerClientY - clientY
-  var y = clientX - centerClientX
+function computeRotation(pageX, pageY, centerPageX, centerPageY) {
+  var x = centerPageY - pageY
+  var y = pageX - centerPageX
   var l = Math.sqrt(x * x + y * y)
 
   var rotation = Math.acos(x / l) / (Math.PI / 180)
