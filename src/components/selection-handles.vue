@@ -173,7 +173,8 @@ module.exports = {
     Array.prototype.forEach.call(handles, function (handle) {
       kDrag.bind(handle)
 
-      handle.addEventListener('mousedown', vue.onmousedown)
+      handle.addEventListener('mousedown', vue.stopPropagationAndPreventDefault)
+      handle.addEventListener('touchstart', vue.stopPropagationAndPreventDefault)
       handle.addEventListener('k.dragstart', vue.ondragstart)
       handle.addEventListener('k.dragSync', vue.ondrag)
     })
@@ -190,7 +191,7 @@ module.exports = {
     }
   },
   methods: {
-    onmousedown: function (e) {
+    stopPropagationAndPreventDefault: function (e) {
       e.stopPropagation()
       e.preventDefault()
     },

@@ -10,6 +10,7 @@
 <template>
 <div class="box imgbox" v-on="
   mousedown: preventDefault,
+  touchstart: preventDefault,
   k.dragstart: ondragstart,
   k.dragSync: ondrag
 " v-style="
