@@ -1,2 +1,3 @@
 var Vue = require('vue')
-new Vue(require('./app.vue')).$mount('#app')
+
+window.app = new Vue(require('./app.vue')).$mount('#app')

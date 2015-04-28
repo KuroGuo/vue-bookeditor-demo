@@ -18,6 +18,8 @@ module.exports = {
           pages: [
             {
               num: '1',
+              width: 1000,
+              height: 1000,
               boxes: []
             }
           ]
