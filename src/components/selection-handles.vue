@@ -13,7 +13,7 @@
   position: absolute;
   margin: auto;
   border-radius: 50%;
-  box-shadow: 0 0 1px #999;
+  box-shadow: 0 0 2px #666;
   box-sizing: border-box;
 }
 
@@ -96,7 +96,7 @@
     width: 12 / displayScaling + 'px',
     height: 12 / displayScaling + 'px',
     border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 1 / displayScaling + 'px #999'
+    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
   "></span>
   <span class="handle handle-left-top" v-style="
     left: -6 / displayScaling + 'px',
@@ -104,7 +104,7 @@
     width: 12 / displayScaling + 'px',
     height: 12 / displayScaling + 'px',
     border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 1 / displayScaling + 'px #999'
+    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
   "></span>
   <span class="handle handle-right-top" v-style="
     right: -6 / displayScaling + 'px',
@@ -112,21 +112,21 @@
     width: 12 / displayScaling + 'px',
     height: 12 / displayScaling + 'px',
     border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 1 / displayScaling + 'px #999'
+    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
   "></span>
   <span class="handle handle-left-center" v-style="
     left: -6 / displayScaling + 'px',
     width: 12 / displayScaling + 'px',
     height: 12 / displayScaling + 'px',
     border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 1 / displayScaling + 'px #999'
+    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
   "></span>
   <span class="handle handle-right-center" v-style="
     right: -6 / displayScaling + 'px',
     width: 12 / displayScaling + 'px',
     height: 12 / displayScaling + 'px',
     border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 1 / displayScaling + 'px #999'
+    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
   "></span>
   <span class="handle handle-left-bottom" v-style="
     left: -6 / displayScaling + 'px',
@@ -134,14 +134,14 @@
     width: 12 / displayScaling + 'px',
     height: 12 / displayScaling + 'px',
     border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 1 / displayScaling + 'px #999'
+    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
   "></span>
   <span class="handle handle-center-bottom" v-style="
     bottom: -6 / displayScaling + 'px',
     width: 12 / displayScaling + 'px',
     height: 12 / displayScaling + 'px',
     border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 1 / displayScaling + 'px #999'
+    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
   "></span>
   <span class="handle handle-right-bottom" v-style="
     right: -6 / displayScaling + 'px',
@@ -149,14 +149,14 @@
     width: 12 / displayScaling + 'px',
     height: 12 / displayScaling + 'px',
     border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 1 / displayScaling + 'px #999'
+    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
   "></span>
   <span class="handle-rotate" v-style="
     top: -30 / displayScaling + 'px',
     width: 16 / displayScaling + 'px',
     height: 16 / displayScaling + 'px',
     border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 1 / displayScaling + 'px #999'
+    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
   "></span>
 </div>
 </template>

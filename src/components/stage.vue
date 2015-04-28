@@ -14,7 +14,7 @@
 
 <template>
 <div class="stage" v-style="width: page.width * scaling + 'px', height: page.height * scaling + 'px'">
-  <div class="page" v-style="width: page.width + 'px', height: page.height + 'px', transform: 'scale(' + scaling + ')'" v-on="touchstart: preventDefault">
+  <div class="page" v-style="width: page.width + 'px', height: page.height + 'px', transform: 'scale(' + scaling + ')'">
     <div v-component="{{box.type}}" v-repeat="box: page.boxes" v-with="displayScaling: scaling"></div>
   </div>
 </div>
@@ -26,11 +26,6 @@ module.exports = {
   data: function () {
     return {
       scaling: 0.45
-    }
-  },
-  methods: {
-    preventDefault: function (e) {
-      e.preventDefault()
     }
   },
   components: {
