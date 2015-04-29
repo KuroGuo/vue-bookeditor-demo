@@ -16,7 +16,7 @@
 " v-style="
   width: box.width + 'px',
   height: box.height + 'px',
-  transform: 'translate(' + box.x + 'px,' + box.y + 'px) rotate(' + box.rotation + 'deg)'
+  transform: 'translateZ(0) translate(' + box.x + 'px,' + box.y + 'px) rotate(' + box.rotation + 'deg)'
 ">
   <div v-component="selection-handles" v-with="
     box: box,

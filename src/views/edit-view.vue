@@ -4,6 +4,8 @@
   left: 500px;
   top: 0;
   width: 500px;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
 }
 </style>
 
