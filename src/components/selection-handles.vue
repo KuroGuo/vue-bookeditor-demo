@@ -12,7 +12,7 @@
   background-color: #48b;
   position: absolute;
   margin: auto;
-  border-radius: 50%;
+  border-radius: 100%;
   box-shadow: 0 0 2px #666;
   box-sizing: border-box;
 }
@@ -41,7 +41,7 @@
   background-color: #48b;
   position: absolute;
   margin: auto;
-  border-radius: 50%;
+  border-radius: 100%;
   box-sizing: border-box;
 }
 
