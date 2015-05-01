@@ -19,7 +19,9 @@ module.exports = {
     addImgbox: function (e) {
       e.preventDefault()
 
-      this.page.addImgbox()
+      var newImgbox = this.page.addImgbox()
+
+      this.selectedBoxes = [newImgbox]
     }
   }
 }

@@ -15,8 +15,8 @@
 </style>
 
 <template>
-<div v-component="toolbar" v-with="page: currentPage, scaling: scaling"></div>
-<div v-component="stage" v-with="page: currentPage, scaling: scaling"></div>
+<div v-component="toolbar" v-with="page: currentPage, scaling: scaling, selectedBoxes: selectedBoxes"></div>
+<div v-component="stage" v-with="page: currentPage, scaling: scaling, selectedBoxes: selectedBoxes"></div>
 <div v-component="page-navigitor" v-with="book: book, currentPage: currentPage"></div>
 <pre class="json-viewer" v-html="bookStr"></pre>
 </template>
@@ -25,6 +25,17 @@
 var beautify = require('js-beautify').js_beautify
 
 module.exports = {
+  data: function () {
+    return {
+      selectedBoxes: []
+    }
+  },
+  watch: {
+    'currentPage': function (val, oldVal) {
+      if (val && oldVal && val.num !== oldVal.num)
+        this.selectedBoxes = []
+    }
+  },
   computed: {
     bookStr: function () {
       return beautify(JSON.stringify(this.book), { indent_size: 2 })

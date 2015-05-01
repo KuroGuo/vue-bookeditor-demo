@@ -9,7 +9,7 @@
 
 <template>
 <div class="stage" v-style="width: page.width * scaling + 'px', height: page.height * scaling + 'px'">
-  <div v-component="page" v-with="page: page, scaling: scaling"></div>
+  <div v-component="page" v-with="page: page, scaling: scaling, selectedBoxes: selectedBoxes"></div>
 </div>
 </template>
 

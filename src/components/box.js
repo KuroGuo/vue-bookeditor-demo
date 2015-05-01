@@ -15,14 +15,18 @@ module.exports = Vue.extend({
     document.addEventListener('mousedown', this.cancelSelect)
     document.addEventListener('touchstart', this.cancelSelect)
   },
-  destroy: function () {
+  destroyed: function () {
     document.removeEventListener('mousedown', this.cancelSelect)
     document.removeEventListener('touchstart', this.cancelSelect)
   },
   computed: {
     selected: function () {
       var vue = this
-      return this.selectedBoxes.some(function (box) {
+
+      if (!vue.selectedBoxes)
+        return false
+
+      return vue.selectedBoxes.some(function (box) {
         return box.id === vue.box.id
       })
     }
@@ -32,12 +36,17 @@ module.exports = Vue.extend({
       e.preventDefault()
       e.stopPropagation()
 
-      if (this.selected)
-        return
-
-      if (!e.metaKey && !e.ctrlKey)
-        this.selectedBoxes = []
-      this.select()
+      if (e.metaKey || e.ctrlKey) {
+        if (this.selected) {
+          this.cancelSelect()
+        } else {
+          this.select()
+        }
+      } else {
+        if (!this.selected)
+          this.selectedBoxes = []
+        this.select()
+      }
     },
     ondragstart: function (e) {
       var vue = this

@@ -7,11 +7,6 @@
 <script>
 module.exports = {
   replace: true,
-  data: function () {
-    return {
-      selectedBoxes: []
-    }
-  },
   components: {
     imgbox: require('./imgbox.vue')
   }
