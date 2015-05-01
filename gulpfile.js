@@ -44,7 +44,6 @@ gulp.task('webpack-build', function() {
         publicPath: './build/',
         filename: 'bundle.js'
       },
-      devtool: '#source-map',
       module: {
         loaders: [
           { test: /\.vue$/, loader: 'vue' },
