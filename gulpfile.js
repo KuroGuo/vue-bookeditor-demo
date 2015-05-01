@@ -4,16 +4,19 @@ var webpack = require('webpack')
 var fs = require('fs')
 
 gulp.task('webpack-dev', function() {
-  gulp.src('src/main.js')
+  gulp.src('./src/main.js')
     .pipe(gulpWebpack({
       entry: './src/main.js',
       output: {
+        publicPath: './build/',
         filename: 'bundle.js'
       },
       devtool: '#source-map',
       module: {
         loaders: [
-          { test: /\.vue$/, loader: 'vue' }
+          { test: /\.vue$/, loader: 'vue' },
+          { test: /\.css$/, loader: "style!css" },
+          { test: /\.(png|jpg|gif)$/, loader: 'url?limit=8192' }
         ]
       },
       resolve: {
@@ -29,19 +32,24 @@ gulp.task('webpack-dev', function() {
 })
 
 gulp.task('webpack-build', function() {
-  fs.readdirSync('./build/').forEach(function (file) {
-    fs.unlinkSync('./build/' + file)
-  })
+  if (fs.existsSync('./build/'))
+    fs.readdirSync('./build/').forEach(function (file) {
+      fs.unlinkSync('./build/' + file)
+    })
 
-  gulp.src('src/main.js')
+  gulp.src('./src/main.js')
     .pipe(gulpWebpack({
       entry: './src/main.js',
       output: {
+        publicPath: './build/',
         filename: 'bundle.js'
       },
+      devtool: '#source-map',
       module: {
         loaders: [
-          { test: /\.vue$/, loader: 'vue' }
+          { test: /\.vue$/, loader: 'vue' },
+          { test: /\.css$/, loader: "style!css" },
+          { test: /\.(png|jpg|gif)$/, loader: 'url?limit=8192' }
         ]
       },
       resolve: {
