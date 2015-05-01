@@ -18,7 +18,9 @@ module.exports = {
     addPage: function (e) {
       e.preventDefault()
 
-      this.book.addPage()
+      var newPage = this.book.addPage()
+
+      this.currentPage = newPage
     }
   }
 }

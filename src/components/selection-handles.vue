@@ -82,81 +82,81 @@
 
 <template>
 <div class="selection-handles">
-  <span class="border border-left" v-style="border-left-width: 1 / displayScaling + 'px'"></span>
-  <span class="border border-right" v-style="border-right-width: 1 / displayScaling + 'px'"></span>
-  <span class="border border-top" v-style="border-top-width: 1 / displayScaling + 'px'"></span>
-  <span class="border border-bottom" v-style="border-bottom-width: 1 / displayScaling + 'px'"></span>
+  <span class="border border-left" v-style="border-left-width: 1 / scaling + 'px'"></span>
+  <span class="border border-right" v-style="border-right-width: 1 / scaling + 'px'"></span>
+  <span class="border border-top" v-style="border-top-width: 1 / scaling + 'px'"></span>
+  <span class="border border-bottom" v-style="border-bottom-width: 1 / scaling + 'px'"></span>
   <span class="border border-rotate" v-style="
-    top: -30 / displayScaling + 'px',
-    height: 30 / displayScaling + 'px',
-    border-left-width: 1 / displayScaling + 'px'
+    top: -30 / scaling + 'px',
+    height: 30 / scaling + 'px',
+    border-left-width: 1 / scaling + 'px'
   "></span>
   <span class="handle handle-center-top" v-style="
-    top: -6 / displayScaling + 'px',
-    width: 12 / displayScaling + 'px',
-    height: 12 / displayScaling + 'px',
-    border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
+    top: -6 / scaling + 'px',
+    width: 12 / scaling + 'px',
+    height: 12 / scaling + 'px',
+    border: 1 / scaling + 'px solid white',
+    box-shadow: '0 0 ' + 2 / scaling + 'px #666'
   "></span>
   <span class="handle handle-left-top" v-style="
-    left: -6 / displayScaling + 'px',
-    top: -6 / displayScaling + 'px',
-    width: 12 / displayScaling + 'px',
-    height: 12 / displayScaling + 'px',
-    border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
+    left: -6 / scaling + 'px',
+    top: -6 / scaling + 'px',
+    width: 12 / scaling + 'px',
+    height: 12 / scaling + 'px',
+    border: 1 / scaling + 'px solid white',
+    box-shadow: '0 0 ' + 2 / scaling + 'px #666'
   "></span>
   <span class="handle handle-right-top" v-style="
-    right: -6 / displayScaling + 'px',
-    top: -6 / displayScaling + 'px',
-    width: 12 / displayScaling + 'px',
-    height: 12 / displayScaling + 'px',
-    border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
+    right: -6 / scaling + 'px',
+    top: -6 / scaling + 'px',
+    width: 12 / scaling + 'px',
+    height: 12 / scaling + 'px',
+    border: 1 / scaling + 'px solid white',
+    box-shadow: '0 0 ' + 2 / scaling + 'px #666'
   "></span>
   <span class="handle handle-left-center" v-style="
-    left: -6 / displayScaling + 'px',
-    width: 12 / displayScaling + 'px',
-    height: 12 / displayScaling + 'px',
-    border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
+    left: -6 / scaling + 'px',
+    width: 12 / scaling + 'px',
+    height: 12 / scaling + 'px',
+    border: 1 / scaling + 'px solid white',
+    box-shadow: '0 0 ' + 2 / scaling + 'px #666'
   "></span>
   <span class="handle handle-right-center" v-style="
-    right: -6 / displayScaling + 'px',
-    width: 12 / displayScaling + 'px',
-    height: 12 / displayScaling + 'px',
-    border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
+    right: -6 / scaling + 'px',
+    width: 12 / scaling + 'px',
+    height: 12 / scaling + 'px',
+    border: 1 / scaling + 'px solid white',
+    box-shadow: '0 0 ' + 2 / scaling + 'px #666'
   "></span>
   <span class="handle handle-left-bottom" v-style="
-    left: -6 / displayScaling + 'px',
-    bottom: -6 / displayScaling + 'px',
-    width: 12 / displayScaling + 'px',
-    height: 12 / displayScaling + 'px',
-    border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
+    left: -6 / scaling + 'px',
+    bottom: -6 / scaling + 'px',
+    width: 12 / scaling + 'px',
+    height: 12 / scaling + 'px',
+    border: 1 / scaling + 'px solid white',
+    box-shadow: '0 0 ' + 2 / scaling + 'px #666'
   "></span>
   <span class="handle handle-center-bottom" v-style="
-    bottom: -6 / displayScaling + 'px',
-    width: 12 / displayScaling + 'px',
-    height: 12 / displayScaling + 'px',
-    border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
+    bottom: -6 / scaling + 'px',
+    width: 12 / scaling + 'px',
+    height: 12 / scaling + 'px',
+    border: 1 / scaling + 'px solid white',
+    box-shadow: '0 0 ' + 2 / scaling + 'px #666'
   "></span>
   <span class="handle handle-right-bottom" v-style="
-    right: -6 / displayScaling + 'px',
-    bottom: -6 / displayScaling + 'px',
-    width: 12 / displayScaling + 'px',
-    height: 12 / displayScaling + 'px',
-    border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
+    right: -6 / scaling + 'px',
+    bottom: -6 / scaling + 'px',
+    width: 12 / scaling + 'px',
+    height: 12 / scaling + 'px',
+    border: 1 / scaling + 'px solid white',
+    box-shadow: '0 0 ' + 2 / scaling + 'px #666'
   "></span>
   <span class="handle-rotate" v-style="
-    top: -30 / displayScaling + 'px',
-    width: 16 / displayScaling + 'px',
-    height: 16 / displayScaling + 'px',
-    border: 1 / displayScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / displayScaling + 'px #666'
+    top: -30 / scaling + 'px',
+    width: 16 / scaling + 'px',
+    height: 16 / scaling + 'px',
+    border: 1 / scaling + 'px solid white',
+    box-shadow: '0 0 ' + 2 / scaling + 'px #666'
   "></span>
 </div>
 </template>
@@ -226,8 +226,8 @@ module.exports = {
         this.box.x = this.centerBoxX - this.r * Math.cos(this.angle + this.radian)
         this.box.y = this.centerBoxY - this.r * Math.sin(this.angle + this.radian)
       } else {
-        var deltaX = e.deltaX / this.displayScaling
-        var deltaY = e.deltaY / this.displayScaling
+        var deltaX = e.deltaX / this.scaling
+        var deltaY = e.deltaY / this.scaling
 
         deltaWidth = deltaX * Math.cos(this.radian) + deltaY * Math.sin(this.radian)
         deltaHeight = deltaX * Math.sin(this.radian) - deltaY * Math.cos(this.radian)

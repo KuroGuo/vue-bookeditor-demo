@@ -1,17 +1,22 @@
 <style>
 .json-viewer {
   position: absolute;
-  left: 500px;
-  top: 0;
-  width: 500px;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  pointer-events: none;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
+}
+
+.stage {
+  margin: 8px 0 8px 4px;
 }
 </style>
 
 <template>
-<div v-component="toolbar" v-with="page: currentPage"></div>
-<div v-component="stage" v-with="page: currentPage"></div>
+<div v-component="toolbar" v-with="page: currentPage, scaling: scaling"></div>
+<div v-component="stage" v-with="page: currentPage, scaling: scaling"></div>
 <div v-component="page-navigitor" v-with="book: book, currentPage: currentPage"></div>
 <pre class="json-viewer" v-html="bookStr"></pre>
 </template>

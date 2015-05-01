@@ -1,6 +1,3 @@
-<style>
-</style>
-
 <template>
 <div v-component="{{currentView}}" v-with="editor"></div>
 </template>

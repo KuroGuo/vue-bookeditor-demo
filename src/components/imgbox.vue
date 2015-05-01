@@ -8,19 +8,14 @@
 </style>
 
 <template>
-<div class="box imgbox" v-on="
-  mousedown: preventDefault,
-  touchstart: preventDefault,
-  k.dragstart: ondragstart,
-  k.dragSync: ondrag
-" v-style="
+<div class="box imgbox" v-style="
   width: box.width + 'px',
   height: box.height + 'px',
   transform: 'translateZ(0) translate(' + box.x + 'px,' + box.y + 'px) rotate(' + box.rotation + 'deg)'
 ">
-  <div v-component="selection-handles" v-with="
+  <div v-show="selected" v-component="selection-handles" v-with="
     box: box,
-    displayScaling: displayScaling
+    scaling: scaling
   "></div>
 </div>
 </template>
@@ -28,9 +23,5 @@
 <script>
 var BoxVue = require('./box')
 
-module.exports = BoxVue.extend({
-  components: {
-    'selection-handles': require('./selection-handles.vue')
-  }
-})
+module.exports = BoxVue.extend({})
 </script>

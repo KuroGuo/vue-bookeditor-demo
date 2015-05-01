@@ -1,3 +1,5 @@
+var boxIdSeed = 0
+
 function Book(bookData) {
   this.pages = bookData.pages.map(function (pageData) {
     return new Page(pageData)
@@ -13,7 +15,11 @@ Book.prototype.addPage = function (pageData) {
       boxes: []
     }
 
-  this.pages.push(new Page(pageData))
+  var newPage = new Page(pageData)
+
+  this.pages.push(newPage)
+
+  return newPage
 }
 
 function Page(pageData) {
@@ -37,10 +43,15 @@ Page.prototype.addImgbox = function (imgboxData) {
       rotation: 0
     }
 
-  this.boxes.push(new Imgbox(imgboxData))
+  var newImgbox = new Imgbox(imgboxData)
+
+  this.boxes.push(newImgbox)
+
+  return newImgbox
 }
 
 function Imgbox(imgboxData) {
+  this.id = boxIdSeed++
   this.type = 'imgbox'
   this.x = imgboxData.x
   this.y = imgboxData.y
