@@ -7,22 +7,9 @@
 <script>
 module.exports = {
   replace: true,
-  ready: function () {
-    document.addEventListener('mousedown', this.clearSelectedBoxes)
-    document.addEventListener('touchstart', this.clearSelectedBoxes)
-  },
-  destroy: function () {
-    document.removeEventListener('mousedown', this.clearSelectedBoxes)
-    document.removeEventListener('touchstart', this.clearSelectedBoxes)
-  },
-  methods: {
-    clearSelectedBoxes: function () {
-      this.selectedBoxes = {}
-    }
-  },
   data: function () {
     return {
-      selectedBoxes: {}
+      selectedBoxes: []
     }
   },
   components: {

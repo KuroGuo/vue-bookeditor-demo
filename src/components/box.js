@@ -11,10 +11,20 @@ module.exports = Vue.extend({
 
     this.$el.addEventListener('k.dragstart', this.ondragstart)
     this.$el.addEventListener('k.dragSync', this.ondrag)
+
+    document.addEventListener('mousedown', this.cancelSelect)
+    document.addEventListener('touchstart', this.cancelSelect)
+  },
+  destroy: function () {
+    document.removeEventListener('mousedown', this.cancelSelect)
+    document.removeEventListener('touchstart', this.cancelSelect)
   },
   computed: {
     selected: function () {
-      return !!this.selectedBoxes[this.box.id]
+      var vue = this
+      return this.selectedBoxes.some(function (box) {
+        return box.id === vue.box.id
+      })
     }
   },
   methods: {
@@ -22,19 +32,41 @@ module.exports = Vue.extend({
       e.preventDefault()
       e.stopPropagation()
 
-      this.selectedBoxes = {}
-      this.$set('selectedBoxes[' + this.box.id + ']', 1)
+      if (this.selected)
+        return
+
+      if (!e.metaKey && !e.ctrlKey)
+        this.selectedBoxes = []
+      this.select()
     },
     ondragstart: function (e) {
-      this.dragstartX = this.box.x
-      this.dragstartY = this.box.y
+      var vue = this
+
+      vue.selectedBoxesDragstartPoint = {}
+      vue.selectedBoxes.forEach(function (box) {
+        vue.selectedBoxesDragstartPoint[box.id] = { x: box.x, y: box.y }
+      })
     },
     ondrag: function (e) {
-      var x = this.dragstartX + e.deltaX / this.scaling
-      var y = this.dragstartY + e.deltaY / this.scaling
+      var vue = this
+      var deltaX = e.deltaX, deltaY = e.deltaY
 
-      this.box.x = x
-      this.box.y = y
+      vue.selectedBoxes.forEach(function (box) {
+        var dragstartPoint = vue.selectedBoxesDragstartPoint[box.id]
+        box.x = dragstartPoint.x + deltaX / vue.scaling
+        box.y = dragstartPoint.y + deltaY / vue.scaling
+      })
+    },
+    select: function () {
+      var vue = this
+      var exist = vue.selectedBoxes.some(function (box) {
+        return box.id === vue.box.id
+      })
+      if (!exist)
+        vue.selectedBoxes.push(vue.box)
+    },
+    cancelSelect: function () {
+      this.selectedBoxes.$remove(this.box)
     }
   },
   components: {
