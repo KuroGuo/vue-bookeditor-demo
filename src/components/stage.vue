@@ -1,4 +1,7 @@
 <style>
+.stage {
+  position: relative;
+}
 .page {
   box-shadow: 0 1px 6px #aaa;
   position: relative;
@@ -9,7 +12,12 @@
 
 <template>
 <div class="stage" v-style="width: page.width * scaling + 'px', height: page.height * scaling + 'px'">
-  <div v-component="page" v-with="page: page, scaling: scaling, selectedBoxes: selectedBoxes"></div>
+  <div v-component="page" v-with="
+    page: page,
+    scaling: scaling,
+    selectedBoxes: selectedBoxes
+  "></div>
+  <div v-repeat="box: selectedBoxes" v-component="selection-handles" v-with="scaling: scaling"></div>
 </div>
 </template>
 
@@ -17,7 +25,8 @@
 module.exports = {
   replace: true,
   components: {
-    page: require('./page.vue')
+    page: require('./page.vue'),
+    'selection-handles': require('./selection-handles.vue')
   }
 }
 </script>

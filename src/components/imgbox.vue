@@ -1,23 +1,9 @@
-<style>
-.imgbox {
-  position: absolute;
-  background-color: #aaa;
-  -webkit-transform-origin: left top;
-          transform-origin: left top;
-}
-</style>
-
 <template>
-<div class="box imgbox" v-style="
-  width: box.width + 'px',
-  height: box.height + 'px',
-  transform: 'translateZ(0) translate(' + box.x + 'px,' + box.y + 'px) rotate(' + box.rotation + 'deg)'
-">
-  <div v-show="selected" v-component="selection-handles" v-with="
-    box: box,
-    scaling: scaling
-  "></div>
-</div>
+<rect v-attr="
+  width: box.width,
+  height: box.height,
+  transform: 'translate(' + box.x + ',' + box.y + ') rotate(' + box.rotation + ')'
+" fill="#aaa" />
 </template>
 
 <script>

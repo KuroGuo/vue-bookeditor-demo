@@ -77,8 +77,5 @@ module.exports = Vue.extend({
     cancelSelect: function () {
       this.selectedBoxes.$remove(this.box)
     }
-  },
-  components: {
-    'selection-handles': require('./selection-handles.vue')
   }
 })

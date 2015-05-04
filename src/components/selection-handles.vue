@@ -1,48 +1,31 @@
 <style>
 .selection-handles {
-  position: absolute;
+  width: 0;
+  height: 0;
   left: 0;
-  right: 0;
   top: 0;
-  bottom: 0;
+  position: absolute;
 }
 
-.handle {
-  display: block;
-  background-color: #48b;
-  position: absolute;
-  margin: auto;
-  border-radius: 100%;
+.handle, .handle-rotate {
+  border: 1px solid white;
   box-shadow: 0 0 2px #666;
   box-sizing: border-box;
-}
-
-.handle-center-top {
-  left: 0;
-  right: 0;
-}
-.handle-left-center {
-  top: 0;
-  bottom: 0;
-}
-.handle-right-center {
-  top: 0;
-  bottom: 0;
-}
-.handle-center-bottom {
-  left: 0;
-  right: 0;
-}
-
-.handle-rotate {
-  left: 0;
-  right: 0;
-  display: block;
+  border-radius: 100%;
+  position: absolute;
   background-color: #48b;
   position: absolute;
-  margin: auto;
-  border-radius: 100%;
-  box-sizing: border-box;
+  left: 0;
+  top: 0;
+}
+.handle {
+  width: 12px;
+  height: 12px;
+}
+.handle-rotate {
+  width: 16px;
+  height: 16px;
+  top: -25px;
 }
 
 .border {
@@ -50,113 +33,85 @@
   border-style: solid;
   border-width: 0;
   position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .border-left {
-  left: 0;
-  top: 0;
-  bottom: 0;
+  width: 0;
+  border-left-width: 1px;
 }
 .border-right {
-  right: 0;
-  top: 0;
-  bottom: 0;
+  width: 0;
+  border-right-width: 1px;
 }
 .border-top {
-  left: 0;
-  right: 0;
-  top: 0;
+  height: 0;
+  border-top-width: 1px;
 }
 .border-bottom {
-  left: 0;
-  right: 0;
-  bottom: 0;
+  height: 0;
+  border-bottom-width: 1px;
 }
 .border-rotate {
-  left: 0;
-  right: 0;
   width: 0;
-  margin: 0 auto;
+  height: 30px;
+  top: -30px;
+  border-left-width: 1px;
 }
 </style>
 
 <template>
-<div class="selection-handles">
-  <span class="border border-left" v-style="border-left-width: 1 / handleScaling + 'px'"></span>
-  <span class="border border-right" v-style="border-right-width: 1 / handleScaling + 'px'"></span>
-  <span class="border border-top" v-style="border-top-width: 1 / handleScaling + 'px'"></span>
-  <span class="border border-bottom" v-style="border-bottom-width: 1 / handleScaling + 'px'"></span>
+<div class="selection-handles" v-style="
+  transform: 'translateZ(0)'
+    + 'translate(' + (box.x * scaling) + 'px,' + (box.y * scaling) + 'px)'
+    + 'rotate(' + box.rotation + 'deg)'
+">
+  <span class="border border-left" v-style="
+    transform: 'translateZ(0)',
+    height: (box.height * scaling) + 'px'
+  "></span>
+  <span class="border border-right" v-style="
+    transform: 'translateZ(0)translateX(' + (box.width * scaling) + 'px)',
+    height: (box.height * scaling) + 'px'
+  "></span>
+  <span class="border border-top" v-style="
+    transform : 'translateZ(0)',
+    width: (box.width * scaling) + 'px'
+  "></span>
+  <span class="border border-bottom" v-style="
+    transform: 'translateZ(0)translateY(' + (box.height * scaling) + 'px)',
+    width: (box.width * scaling) + 'px'
+  "></span>
   <span class="border border-rotate" v-style="
-    top: -30 / handleScaling + 'px',
-    height: 30 / handleScaling + 'px',
-    border-left-width: 1 / handleScaling + 'px'
+    transform: 'translateZ(0)translateX(' + (box.width / 2 * scaling) + 'px)'
   "></span>
   <span class="handle handle-center-top" v-style="
-    top: -6 / handleScaling + 'px',
-    width: 12 / handleScaling + 'px',
-    height: 12 / handleScaling + 'px',
-    border: 1 / handleScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / handleScaling + 'px #666'
+    transform: 'translateZ(0)translateX(' + (box.width / 2 * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
   <span class="handle handle-left-top" v-style="
-    left: -6 / handleScaling + 'px',
-    top: -6 / handleScaling + 'px',
-    width: 12 / handleScaling + 'px',
-    height: 12 / handleScaling + 'px',
-    border: 1 / handleScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / handleScaling + 'px #666'
+    transform: 'translateZ(0)translate(-50%, -50%)'
   "></span>
   <span class="handle handle-right-top" v-style="
-    right: -6 / handleScaling + 'px',
-    top: -6 / handleScaling + 'px',
-    width: 12 / handleScaling + 'px',
-    height: 12 / handleScaling + 'px',
-    border: 1 / handleScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / handleScaling + 'px #666'
+    transform: 'translateZ(0)translateX(' + (box.width * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
   <span class="handle handle-left-center" v-style="
-    left: -6 / handleScaling + 'px',
-    width: 12 / handleScaling + 'px',
-    height: 12 / handleScaling + 'px',
-    border: 1 / handleScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / handleScaling + 'px #666'
+    transform: 'translateZ(0)translateY(' + (box.height / 2 * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
   <span class="handle handle-right-center" v-style="
-    right: -6 / handleScaling + 'px',
-    width: 12 / handleScaling + 'px',
-    height: 12 / handleScaling + 'px',
-    border: 1 / handleScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / handleScaling + 'px #666'
+    transform: 'translateZ(0)translate(' + (box.width * scaling) + 'px,' + (box.height / 2 * scaling) + 'px)' + 'translate(-50%, -50%)' 
   "></span>
   <span class="handle handle-left-bottom" v-style="
-    left: -6 / handleScaling + 'px',
-    bottom: -6 / handleScaling + 'px',
-    width: 12 / handleScaling + 'px',
-    height: 12 / handleScaling + 'px',
-    border: 1 / handleScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / handleScaling + 'px #666'
+    transform: 'translateZ(0)translateY(' + (box.height * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
   <span class="handle handle-center-bottom" v-style="
-    bottom: -6 / handleScaling + 'px',
-    width: 12 / handleScaling + 'px',
-    height: 12 / handleScaling + 'px',
-    border: 1 / handleScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / handleScaling + 'px #666'
+    transform: 'translateZ(0)translate(' + (box.width / 2 * scaling) + 'px,' + (box.height * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
   <span class="handle handle-right-bottom" v-style="
-    right: -6 / handleScaling + 'px',
-    bottom: -6 / handleScaling + 'px',
-    width: 12 / handleScaling + 'px',
-    height: 12 / handleScaling + 'px',
-    border: 1 / handleScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / handleScaling + 'px #666'
+    transform: 'translateZ(0)translate(' + (box.width * scaling) + 'px,' + (box.height * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
   <span class="handle-rotate" v-style="
-    top: -30 / handleScaling + 'px',
-    width: 16 / handleScaling + 'px',
-    height: 16 / handleScaling + 'px',
-    border: 1 / handleScaling + 'px solid white',
-    box-shadow: '0 0 ' + 2 / handleScaling + 'px #666'
+    transform: 'translateZ(0)translateX(' + (box.width / 2 * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
 </div>
 </template>
@@ -188,14 +143,6 @@ module.exports = {
     },
     angle: function () {
       return Math.atan(this.box.height / this.box.width)
-    },
-    handleScaling: function () {
-      var scaling = this.scaling
-
-      if (scaling > 1)
-        scaling = 1
-
-      return scaling 
     }
   },
   methods: {
@@ -214,8 +161,8 @@ module.exports = {
 
       if (classList.contains('handle-rotate')) {
         this.rect = this.$el.getBoundingClientRect()
-        this.centerPageX = this.rect.left + this.rect.width / 2 + window.pageXOffset
-        this.centerPageY = this.rect.top + this.rect.height / 2 + window.pageYOffset
+        this.centerPageX = this.rect.left + this.r * Math.cos(this.angle + this.radian) * this.scaling + window.pageXOffset
+        this.centerPageY = this.rect.top + this.r * Math.sin(this.angle + this.radian) * this.scaling + window.pageYOffset
         this.dragstartPointerRotation = computeRotation(e.pageX, e.pageY, this.centerPageX, this.centerPageY)
         this.centerBoxX = this.box.x + this.r * Math.cos(this.angle + this.radian)
         this.centerBoxY = this.box.y + this.r * Math.sin(this.angle + this.radian)
