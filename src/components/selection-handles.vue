@@ -68,23 +68,23 @@
     + 'rotate(' + box.rotation + 'deg)'
 ">
   <span class="border border-left" v-style="
-    transform: 'translateZ(0)',
+    transform: 'translateZ(0) translateX(-50%)',
     height: (box.height * scaling) + 'px'
   "></span>
   <span class="border border-right" v-style="
-    transform: 'translateZ(0)translateX(' + (box.width * scaling) + 'px)',
+    transform: 'translateZ(0)translateX(' + (box.width * scaling) + 'px) translateX(-50%)',
     height: (box.height * scaling) + 'px'
   "></span>
   <span class="border border-top" v-style="
-    transform : 'translateZ(0)',
+    transform : 'translateZ(0) translateY(-50%)',
     width: (box.width * scaling) + 'px'
   "></span>
   <span class="border border-bottom" v-style="
-    transform: 'translateZ(0)translateY(' + (box.height * scaling) + 'px)',
+    transform: 'translateZ(0)translateY(' + (box.height * scaling) + 'px) translateY(-50%)',
     width: (box.width * scaling) + 'px'
   "></span>
   <span class="border border-rotate" v-style="
-    transform: 'translateZ(0)translateX(' + (box.width / 2 * scaling) + 'px)'
+    transform: 'translateZ(0)translateX(' + (box.width / 2 * scaling) + 'px) translateX(-50%)'
   "></span>
   <span class="handle handle-center-top" v-style="
     transform: 'translateZ(0)translateX(' + (box.width / 2 * scaling) + 'px)' + 'translate(-50%, -50%)'

@@ -1,9 +1,9 @@
 <style>
 .stage {
   position: relative;
+  box-shadow: 0 1px 6px #aaa;
 }
 .page {
-  box-shadow: 0 1px 6px #aaa;
   position: relative;
   -webkit-transform-origin: left top;
           transform-origin: left top;
