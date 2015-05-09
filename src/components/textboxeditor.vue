@@ -9,6 +9,7 @@
   -webkit-transform-origin: left top;
           transform-origin: left top;
   cursor: text;
+  padding: 14px;
 }
 .textbox-editor .content {
   min-width: 1em;
@@ -27,19 +28,14 @@
 
 <template>
 <div class="textbox-content textbox-editor" v-style="
-  padding: 14 + 'px',
   width: box.width + 'px',
   height: box.height + 'px',
   font-size: box.fontSize + 'px',
   transform: 'translate(' + (box.x * scaling) + 'px,' + (box.y * scaling) + 'px)'
     + 'rotate(' + box.rotation + 'deg)'
     + 'scale(' + scaling + ')'
-">
-  <div class="content" v-class="vertical: box.vertical" v-on="
-  mousedown: onpointerdown,
-  touchstart: onpointerdown,
-  input: oninput
-" spellcheck="false" contenteditable="true"></div>
+" v-on="mousedown: onpointerdown, touchstart: onpointerdown">
+  <div class="content" v-class="vertical: box.vertical" v-on="input: oninput" spellcheck="false" contenteditable="true"></div>
 </div>
 </template>
 
