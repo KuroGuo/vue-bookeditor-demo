@@ -50,6 +50,25 @@ Page.prototype.addImgbox = function (imgboxData) {
   return newImgbox
 }
 
+Page.prototype.addTextbox = function (textboxData) {
+  if (!textboxData)
+    textboxData = {
+      x: 10,
+      y: 10,
+      width: 200,
+      height: 200,
+      fontSize: 30,
+      content: '',
+      rotation: 0
+    }
+
+  var newTextbox = new Textbox(textboxData)
+
+  this.boxes.push(newTextbox)
+
+  return newTextbox
+}
+
 function Imgbox(imgboxData) {
   this.id = boxIdSeed++
   this.type = 'imgbox'
@@ -59,8 +78,21 @@ function Imgbox(imgboxData) {
   this.height = imgboxData.height
   this.rotation = imgboxData.rotation
 }
-
 Imgbox.prototype = new Box()
+
+function Textbox(textboxData) {
+  this.id = boxIdSeed++
+  this.type = 'textbox'
+  this.x = textboxData.x
+  this.y = textboxData.y
+  this.width = textboxData.width
+  this.height = textboxData.height
+  this.rotation = textboxData.rotation
+  this.fontSize = textboxData.fontSize
+  this.content = textboxData.content
+  this.vertical = textboxData.vertical
+}
+Textbox.prototype = new Box()
 
 function Box() {
 }

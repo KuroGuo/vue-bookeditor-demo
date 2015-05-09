@@ -2,10 +2,11 @@
 <svg class="page" v-attr="
   width: page.width,
   height: page.height
-" v-style="transform: (translateZ ? 'translateZ(0)' : '') + ' scale(' + scaling + ')'">
+" v-style="transform: 'scale(' + scaling + ')'">
   <g v-component="{{box.type}}" v-repeat="box: page.boxes" v-with="
     scaling: scaling,
-    selectedBoxes: selectedBoxes
+    selectedBoxes: selectedBoxes,
+    editingBox: editingBox
   "></g>
 </svg>
 </template>
@@ -30,7 +31,8 @@ module.exports = {
     }
   },
   components: {
-    imgbox: require('./imgbox.vue')
+    imgbox: require('./imgbox.vue'),
+    textbox: require('./textbox.vue')
   }
 }
 </script>

@@ -20,15 +20,29 @@ module.exports = Vue.extend({
     document.removeEventListener('touchstart', this.cancelSelect)
   },
   computed: {
-    selected: function () {
-      var vue = this
+    selected: {
+      get: function () {
+        var vue = this
 
-      if (!vue.selectedBoxes)
-        return false
+        if (!vue.selectedBoxes)
+          return false
 
-      return vue.selectedBoxes.some(function (box) {
-        return box.id === vue.box.id
-      })
+        return vue.selectedBoxes.some(function (box) {
+          return box.id === vue.box.id
+        })
+      },
+      set: function (val) {
+        var vue = this
+        
+        if (val) {
+          if (!vue.selectedBoxes.some(function (box) {
+            return box.id === vue.box.id
+          }))
+            vue.selectedBoxes.push(vue.box)
+        } else {
+          vue.selectedBoxes.$remove(vue.box)
+        }
+      }
     }
   },
   methods: {
@@ -38,14 +52,14 @@ module.exports = Vue.extend({
 
       if (e.metaKey || e.ctrlKey) {
         if (this.selected) {
-          this.cancelSelect()
+          this.selected = false
         } else {
-          this.select()
+          this.selected = true
         }
       } else {
         if (!this.selected)
           this.selectedBoxes = []
-        this.select()
+        this.selected = true
       }
     },
     ondragstart: function (e) {
@@ -68,15 +82,10 @@ module.exports = Vue.extend({
       })
     },
     select: function () {
-      var vue = this
-      var exist = vue.selectedBoxes.some(function (box) {
-        return box.id === vue.box.id
-      })
-      if (!exist)
-        vue.selectedBoxes.push(vue.box)
+      this.selected = true
     },
     cancelSelect: function () {
-      this.selectedBoxes.$remove(this.box)
+      this.selected = false
     }
   }
 })

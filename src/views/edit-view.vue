@@ -22,8 +22,18 @@
 </style>
 
 <template>
-<div v-component="toolbar" v-with="page: currentPage, scaling: scaling, selectedBoxes: selectedBoxes"></div>
-<div v-component="stage" v-with="page: currentPage, scaling: scaling, selectedBoxes: selectedBoxes"></div>
+<div v-component="toolbar" v-with="
+  page: currentPage,
+  scaling: scaling,
+  selectedBoxes:selectedBoxes,
+  editingBox: editingBox
+"></div>
+<div v-component="stage" v-with="
+  page: currentPage,
+  scaling: scaling,
+  selectedBoxes: selectedBoxes,
+  editingBox: editingBox
+"></div>
 <div v-component="page-navigitor" v-with="book: book, currentPage: currentPage"></div>
 <pre class="json-viewer" v-html="bookStr"></pre>
 <span class="fps"></span>
@@ -33,7 +43,8 @@
 module.exports = {
   data: function () {
     return {
-      selectedBoxes: []
+      selectedBoxes: [],
+      editingTextbox: null
     }
   },
   ready: function () {

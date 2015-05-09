@@ -15,9 +15,11 @@
   <div v-component="page" v-with="
     page: page,
     scaling: scaling,
-    selectedBoxes: selectedBoxes
+    selectedBoxes: selectedBoxes,
+    editingBox: editingBox
   "></div>
   <div v-repeat="box: selectedBoxes" v-component="selection-handles" v-with="scaling: scaling"></div>
+  <div v-if="editingBox && editingBox.type === 'textbox'" v-component="textboxeditor" v-with="box: editingBox, scaling: scaling"></div>
 </div>
 </template>
 
@@ -26,7 +28,8 @@ module.exports = {
   replace: true,
   components: {
     page: require('./page.vue'),
-    'selection-handles': require('./selection-handles.vue')
+    'selection-handles': require('./selection-handles.vue'),
+    textboxeditor: require('./textboxeditor.vue')
   }
 }
 </script>
