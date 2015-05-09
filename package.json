@@ -12,11 +12,9 @@
     "gulp-webpack": "^1.4.0",
     "style-loader": "^0.12.1",
     "url-loader": "^0.5.5",
+    "vue": "^0.11.10",
     "vue-loader": "^1.1.4",
     "webpack": "^1.8.9"
   },
-  "dependencies": {
-    "js-beautify": "^1.5.5",
-    "vue": "^0.11.8"
-  }
+  "dependencies": {}
 }

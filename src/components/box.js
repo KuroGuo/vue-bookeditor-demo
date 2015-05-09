@@ -10,7 +10,7 @@ module.exports = Vue.extend({
     kDrag.bind(this.$el)
 
     this.$el.addEventListener('k.dragstart', this.ondragstart)
-    this.$el.addEventListener('k.dragSync', this.ondrag)
+    this.$el.addEventListener('k.drag', this.ondrag)
 
     document.addEventListener('mousedown', this.cancelSelect)
     document.addEventListener('touchstart', this.cancelSelect)
@@ -62,6 +62,7 @@ module.exports = Vue.extend({
 
       vue.selectedBoxes.forEach(function (box) {
         var dragstartPoint = vue.selectedBoxesDragstartPoint[box.id]
+        
         box.x = dragstartPoint.x + deltaX / vue.scaling
         box.y = dragstartPoint.y + deltaY / vue.scaling
       })
