@@ -6,6 +6,11 @@
   outline: none;
   box-sizing: border-box;
   white-space: nowrap;
+  cursor: pointer;
+  cursor: -webkit-grab;
+}
+.textbox-content:active {
+  cursor: -webkit-grabbing;
 }
 .textbox-content.vertical {
   -webkit-writing-mode: tb-rl;

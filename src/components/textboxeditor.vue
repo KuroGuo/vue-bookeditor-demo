@@ -8,6 +8,7 @@
   box-shadow: 0 0 8px #aaa inset;
   -webkit-transform-origin: left top;
           transform-origin: left top;
+  cursor: text;
 }
 .textbox-editor .content {
   min-width: 1em;
@@ -26,25 +27,30 @@
 
 <template>
 <div class="textbox-content textbox-editor" v-style="
-  padding: (14 * scaling) + 'px',
-  width: (box.width * scaling) + 'px',
-  height: (box.height * scaling) + 'px',
-  font-size: (box.fontSize * scaling) + 'px',
+  padding: 14 + 'px',
+  width: box.width + 'px',
+  height: box.height + 'px',
+  font-size: box.fontSize + 'px',
   transform: 'translate(' + (box.x * scaling) + 'px,' + (box.y * scaling) + 'px)'
     + 'rotate(' + box.rotation + 'deg)'
+    + 'scale(' + scaling + ')'
 ">
   <div class="content" v-class="vertical: box.vertical" v-on="
-  mousedown: stopPropagation,
-  touchstart: stopPropagation,
+  mousedown: onpointerdown,
+  touchstart: onpointerdown,
   input: oninput
 " spellcheck="false" contenteditable="true"></div>
 </div>
 </template>
 
 <script>
+var Vue = require('vue')
+
 module.exports = {
   replace: true,
   ready: function () {
+    var vue = this
+
     this.$content = this.$el.children[0]
 
     this.$content.focus()
@@ -58,12 +64,31 @@ module.exports = {
       var computedStyle = window.getComputedStyle(this.$content)
       var width = parseFloat(computedStyle.width)
       var height = parseFloat(computedStyle.height)
-      this.box.width = width / this.scaling + 14 * 2
-      this.box.height = height / this.scaling + 14 * 2
+      this.box.width = width + 14 * 2
+      this.box.height = height + 14 * 2
     }, false, true)
+
+    var requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.setTimeout
+
+    vue.animationFrameToken = requestAnimationFrame(function () {
+      var callee = arguments.callee
+      if (vue.box.vertical) {
+        vue.box.vertical = false
+        Vue.nextTick(function () {
+          vue.box.vertical = true
+        })
+      }
+      vue.animationFrameToken = requestAnimationFrame(callee)
+    })
+  },
+  detached: function () {
+
+    var cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame || window.msCancelAnimationFrame || window.clearTimeout
+
+    cancelAnimationFrame(this.animationFrameToken)
   },
   methods: {
-    stopPropagation: function (e) {
+    onpointerdown: function (e) {
       e.stopPropagation()
     },
     oninput: function () {
