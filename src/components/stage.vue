@@ -1,4 +1,7 @@
 <style>
+.stage, .page {
+  transition: all .4s;
+}
 .stage {
   position: relative;
   box-shadow: 0 1px 6px #aaa;

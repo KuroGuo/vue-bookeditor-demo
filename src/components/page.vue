@@ -1,8 +1,9 @@
 <template>
 <svg class="page" v-attr="
-  width: page.width,
-  height: page.height
-" v-style="transform: 'scale(' + scaling + ')'">
+  width: page.width * scaling,
+  height: page.height * scaling,
+  viewBox: '0 0 ' + page.width + ' ' + page.height
+">
   <g v-component="{{box.type}}" v-repeat="box: page.boxes" v-with="
     scaling: scaling,
     selectedBoxes: selectedBoxes,
@@ -16,23 +17,9 @@ var Vue = require('vue')
 
 module.exports = {
   replace: true,
-  data: function () {
-    return {
-      translateZ: true
-    }
-  },
-  watch: {
-    scaling: function () {
-      var vue = this
-      vue.translateZ = false
-      setTimeout(function () {
-        vue.translateZ = true  
-      })
-    }
-  },
   components: {
     imgbox: require('./imgbox.vue'),
     textbox: require('./textbox.vue')
   }
 }
-</script>
+</script>x
