@@ -60,8 +60,9 @@ module.exports = Vue.extend({
           this.selected = true
         }
       } else {
-        if (!this.selected)
-          this.selectedBoxes = []
+        if (!this.selected){
+          this.selectedBoxes.splice(0, this.selectedBoxes.length)
+        }
         this.selected = true
       }
     },

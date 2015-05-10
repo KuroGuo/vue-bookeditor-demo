@@ -102,7 +102,7 @@ module.exports = BoxVue.extend({
       set: function (val) {
         if (val) {
           this.editingBox = this.box
-          this.selectedBoxes = []
+          this.selectedBoxes.splice(0, this.selectedBoxes.length)
         } else{
           this.editingBox = null
         }

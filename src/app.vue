@@ -1,5 +1,5 @@
 <template>
-<div v-component="{{currentView}}" v-with="editor"></div>
+<div v-component="{{currentView}}" v-with="book: editor.book, currentPage: editor.currentPage"></div>
 </template>
 
 <script>

@@ -22,27 +22,31 @@
 </style>
 
 <template>
-<div v-component="toolbar" v-with="
-  page: currentPage,
-  scaling: scaling,
-  selectedBoxes:selectedBoxes,
-  editingBox: editingBox
-"></div>
-<div v-component="stage" v-with="
-  page: currentPage,
-  scaling: scaling,
-  selectedBoxes: selectedBoxes,
-  editingBox: editingBox
-"></div>
-<div v-component="page-navigitor" v-with="book: book, currentPage: currentPage"></div>
-<pre class="json-viewer" v-html="bookStr"></pre>
-<span class="fps"></span>
+<div class="edit-view">
+  <div v-component="toolbar" v-with="
+    page: currentPage,
+    scaling: scaling,
+    selectedBoxes: selectedBoxes,
+    editingBox: editingBox
+  "></div>
+  <div v-component="stage" v-with="
+    page: currentPage,
+    scaling: scaling,
+    selectedBoxes: selectedBoxes,
+    editingBox: editingBox
+  "></div>
+  <div v-component="page-navigitor" v-with="book: book, currentPage: currentPage"></div>
+  <pre class="json-viewer" v-html="bookStr"></pre>
+  <span class="fps"></span>
+</div>
 </template>
 
 <script>
 module.exports = {
+  replace: true,
   data: function () {
     return {
+      scaling: 0.75,
       selectedBoxes: [],
       editingTextbox: null
     }
@@ -67,7 +71,7 @@ module.exports = {
   watch: {
     'currentPage': function (val, oldVal) {
       if (val && oldVal && val.num !== oldVal.num)
-        this.selectedBoxes = []
+        this.selectedBoxes.splice(0, this.selectedBoxes.length)
     }
   },
   computed: {
