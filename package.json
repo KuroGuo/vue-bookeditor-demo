@@ -2,8 +2,8 @@
   "name": "vue-bookeditor-demo",
   "version": "1.0.0",
   "scripts": {
-    "dev": "webpack --watch --devtool source-map",
-    "build": "webpack --plugin webpack/lib/optimize/UglifyJsPlugin"
+    "dev": "gulp",
+    "build": "gulp build"
   },
   "devDependencies": {
     "css-loader": "^0.12.0",
