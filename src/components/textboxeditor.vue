@@ -67,7 +67,6 @@ module.exports = {
     var requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.setTimeout
 
     vue.animationFrameToken = requestAnimationFrame(function () {
-      console.log('frame')
       var callee = arguments.callee
       if (vue.box.vertical) {
         vue.box.vertical = false

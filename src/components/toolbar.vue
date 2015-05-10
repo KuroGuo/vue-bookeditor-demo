@@ -16,7 +16,7 @@
   mousedown: stopPropagation,
   touchstart: stopPropagation
 ">
-  <input type="checkbox" v-model="editingBox.vertical"><span style="font-size: 12px;">文字竖排</span>
+  <input type="checkbox" v-model="editingBox.vertical" style="vertical-align: middle; margin: 0 3px"><span style="font-size: 12px; line-height: 1; vertical-align: middle;">文字竖排</span>
 </label>
 </template>
 
