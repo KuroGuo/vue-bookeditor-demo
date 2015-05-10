@@ -12,8 +12,8 @@
   <option value="3">300%</option>
   <option value="4">400%</option>
 </select>
-<label v-if="editingBox && editingBox.type === 'textbox'">
-  <input type="checkbox" v-model="editingBox.vertical" v-on="mousedown: stopPropagation"><span style="font-size: 12px;">文字竖排</span>
+<label v-if="editingBox && editingBox.type === 'textbo x'" v-on="mousedown: stopPropagation">
+  <input type="checkbox" v-model="editingBox.vertical"><span style="font-size: 12px;">文字竖排</span>
 </label>
 </template>
 
