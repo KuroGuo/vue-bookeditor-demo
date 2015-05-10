@@ -74,7 +74,9 @@ module.exports = {
           vue.box.vertical = true
         })
       }
-      vue.animationFrameToken = requestAnimationFrame(callee)
+      Vue.nextTick(function () {
+        vue.animationFrameToken = requestAnimationFrame(callee)  
+      })
     })
   },
   detached: function () {
