@@ -39,6 +39,9 @@ module.exports = Vue.extend({
             return box.id === vue.box.id
           }))
             vue.selectedBoxes.push(vue.box)
+
+          if (vue.editingBox)
+            vue.editingBox = null
         } else {
           vue.selectedBoxes.$remove(vue.box)
         }

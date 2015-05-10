@@ -64,6 +64,8 @@ module.exports = BoxVue.extend({
       this.$content.style.fontSize = val + 'px'
     }, false, true)
     this.$watch('box.content', function (val, oldVal) {
+      if (!val || val === '<br>')
+        val = '请输入文字'
       if (this.$content.innerHTML !== val) {
         this.$content.innerHTML = val
       }

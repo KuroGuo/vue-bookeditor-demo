@@ -86,28 +86,28 @@
   <span class="border border-rotate" v-style="
     transform: 'translateZ(0)translateX(' + (box.width / 2 * scaling) + 'px) translateX(-50%)'
   "></span>
-  <span class="handle handle-center-top" v-style="
+  <span v-if="resizeable" class="handle handle-center-top" v-style="
     transform: 'translateZ(0)translateX(' + (box.width / 2 * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
-  <span class="handle handle-left-top" v-style="
+  <span v-if="resizeable" class="handle handle-left-top" v-style="
     transform: 'translateZ(0)translate(-50%, -50%)'
   "></span>
-  <span class="handle handle-right-top" v-style="
+  <span v-if="resizeable" class="handle handle-right-top" v-style="
     transform: 'translateZ(0)translateX(' + (box.width * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
-  <span class="handle handle-left-center" v-style="
+  <span v-if="resizeable" class="handle handle-left-center" v-style="
     transform: 'translateZ(0)translateY(' + (box.height / 2 * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
-  <span class="handle handle-right-center" v-style="
+  <span v-if="resizeable" class="handle handle-right-center" v-style="
     transform: 'translateZ(0)translate(' + (box.width * scaling) + 'px,' + (box.height / 2 * scaling) + 'px)' + 'translate(-50%, -50%)' 
   "></span>
-  <span class="handle handle-left-bottom" v-style="
+  <span v-if="resizeable" class="handle handle-left-bottom" v-style="
     transform: 'translateZ(0)translateY(' + (box.height * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
-  <span class="handle handle-center-bottom" v-style="
+  <span v-if="resizeable" class="handle handle-center-bottom" v-style="
     transform: 'translateZ(0)translate(' + (box.width / 2 * scaling) + 'px,' + (box.height * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
-  <span class="handle handle-right-bottom" v-style="
+  <span v-if="resizeable" class="handle handle-right-bottom" v-style="
     transform: 'translateZ(0)translate(' + (box.width * scaling) + 'px,' + (box.height * scaling) + 'px)' + 'translate(-50%, -50%)'
   "></span>
   <span class="handle-rotate" v-style="
@@ -143,6 +143,9 @@ module.exports = {
     },
     angle: function () {
       return Math.atan(this.box.height / this.box.width)
+    },
+    resizeable: function () {
+      return this.box.type === 'textbox' ? false : true
     }
   },
   methods: {

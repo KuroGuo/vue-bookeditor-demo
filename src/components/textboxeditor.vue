@@ -12,7 +12,7 @@
   padding: 14px;
 }
 .textbox-editor .content {
-  min-width: 1em;
+  min-width: 5em;
   min-height: 1em;
   outline: none;
   position: absolute;
@@ -22,7 +22,7 @@
   -webkit-writing-mode: vertical-rl;
   writing-mode: tb-rl;
   min-width: 1em;
-  min-height: 1em;
+  min-height: 5em;
 }
 </style>
 
