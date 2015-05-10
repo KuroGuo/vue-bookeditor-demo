@@ -3,8 +3,8 @@
 <button v-on="click: addTextbox">添加文本框</button>
 <select v-model="scaling">
   <option value="0.25">25%</option>
-  <option value="0.5" selected="selected">50%</option>
-  <option value="0.75">75%</option>
+  <option value="0.5">50%</option>
+  <option value="0.75" selected="selected">75%</option>
   <option value="1">100%</option>
   <option value="1.25">125%</option>
   <option value="1.5">150%</option>
