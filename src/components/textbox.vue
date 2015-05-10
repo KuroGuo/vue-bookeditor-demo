@@ -115,11 +115,24 @@ module.exports = BoxVue.extend({
         e.stopPropagation()
 
       this.pointerdownSelected = this.selected
-      this.pointerdownPageX = e.pageX
-      this.pointerdownPageY = e.pageY
+
+      var pageX, pageY
+
+      if (e.type === 'mousedown')
+        pageX = e.pageX, pageY = e.pageY
+      else if (e.type === 'touchstart')
+        pageX = e.changedTouches[0].pageX, pageY = e.changedTouches[0].pageY
+
+      this.pointerdownPageX = pageX
+      this.pointerdownPageY = pageY
     },
     onTextPointerup: function (e) {
-      if (Math.abs(e.pageX - this.pointerdownPageX) <= 3 && Math.abs(e.pageY - this.pointerdownPageY) <= 3)
+      if (e.type === 'mouseup')
+        pageX = e.pageX, pageY = e.pageY
+      else if (e.type === 'touchend')
+        pageX = e.changedTouches[0].pageX, pageY = e.changedTouches[0].pageY
+
+      if (Math.abs(pageX - this.pointerdownPageX) <= 3 && Math.abs(pageY - this.pointerdownPageY) <= 3)
         if (this.pointerdownSelected)
           this.onTextTap()
     },
