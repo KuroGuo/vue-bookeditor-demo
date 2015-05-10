@@ -56,7 +56,7 @@ Page.prototype.addTextbox = function (textboxData) {
       x: 10,
       y: 10,
       width: 178,
-      height: 70,
+      height: 58,
       fontSize: 30,
       content: '',
       rotation: 0
